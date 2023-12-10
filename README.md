@@ -48,5 +48,5 @@ Ce projet vise à développer une application de gestion permettant d'attribuer 
 3. Importer les entités dans votre base de données.
 4. Déployer l'application sur GlassFish.
 ## Authors
--BAJEDDI
--killer-beep07
+**-BAJEDDI**
+**killer-beep07**
