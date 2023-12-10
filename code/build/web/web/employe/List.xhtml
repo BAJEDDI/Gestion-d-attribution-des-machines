@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+   
+ 
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEmployeTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="EmployeListForm">
+                <p:panel header="#{bundle.ListEmployeTitle}" styleClass="list-panel">
+                    <p:dataTable id="datalist" value="#{employeController.items}" var="item"
+                                 selectionMode="single" selection="#{employeController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 styleClass="data-table">
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{ bundle.ListEmployeTitle_id }"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{Lang.selectedLocale eq 'en' ? bundle.ListEmployeTitle_nom : bundlefr.ListEmployeTitle_nom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nom}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{Lang.selectedLocale eq 'en' ? bundle.ListEmployeTitle_prenom : bundlefr.ListEmployeTitle_prenom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenom}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{Lang.selectedLocale eq 'en' ? bundle.ListEmployeTitle_salaire : bundlefr.ListEmployeTitle_salaire}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.salaire}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmployeTitle_chef}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.chef}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{Lang.selectedLocale eq 'en' ? bundle.Create : bundlefr.Create}" actionListener="#{employeController.prepareCreate}" update=":EmployeCreateForm" oncomplete="PF('EmployeCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{Lang.selectedLocale eq 'en' ? bundle.View : bundlefr.View}" update=":EmployeViewForm" oncomplete="PF('EmployeViewDialog').show()" disabled="#{empty employeController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{Lang.selectedLocale eq 'en' ? bundle.Edit : bundlefr.Edit}" update=":EmployeEditForm" oncomplete="PF('EmployeEditDialog').show()" disabled="#{empty employeController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{Lang.selectedLocale eq 'en' ? bundle.Delete : bundlefr.Delete}" actionListener="#{employeController.destroy}" update=":growl,datalist" disabled="#{empty employeController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+<h:form id="MachineListForm"></h:form>
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

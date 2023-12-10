@@ -1,0 +1,63 @@
+.ui-widget {
+    font-size: 12px !important;
+}
+.ui-layout-north {
+    z-index: 20 !important;
+    overflow: visible !important;;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow: visible !important;
+}
+.ui-widget-header {
+    text-align: center;
+    text-transform: uppercase;
+}
+.ui-button {
+    margin-top: 10px !important;
+}
+/* Style for the panel */
+.list-panel {
+    background-color: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Style for the data table */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Style for table headers */
+.data-table th {
+    background-color: #f5f5f5;
+    padding: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Style for table cells */
+.data-table td {
+    padding: 8px;
+}
+
+/* Style for buttons in the footer */
+.data-table .ui-button {
+    margin-right: 5px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background-color: dimgray;
+    color: black;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.data-table .ui-button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-form {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-form input {
+            margin: 5px 0;
+            padding: 8px;
+            width: 200px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .login-form .login-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-form .login-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="login-form">
+        <h2>Login</h2> <!-- Title -->
+        <h:form>
+            <h:inputText value="#{loginBean.username}" placeholder="Username" /><br/>
+            <h:inputSecret value="#{loginBean.password}" placeholder="Password" /><br/>
+            <h:commandButton value="Login" action="#{loginBean.login}" styleClass="login-button" />
+        </h:form>
+    </div>
+</h:body>
+</html>
